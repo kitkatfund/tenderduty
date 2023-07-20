@@ -1,6 +1,6 @@
 # 1st stage, build app
 FROM golang:1.20 as builder
-RUN apt-get update && apt-get -y upgrade && apt-get install -y upx
+RUN apt update && apt -y upgrade && apt install -y upx
 COPY . /build/app
 WORKDIR /build/app
 
