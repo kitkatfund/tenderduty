@@ -1,5 +1,5 @@
 # docker-compose example for tenderduty, copy this file to docker-compose.yml and edit to suit.
-version: '3.9'
+version: '3.2'
 
 networks:
   monitor-net:
@@ -14,12 +14,10 @@ services:
     image: ghcr.io/blockpane/tenderduty:latest
     command: ""
     ports:
-      - "8888:8888"   # Dashboard
-      - "28686:28686"  # Prometheus exporter
+      - '8888:8888'   # Dashboard
     volumes:
       - home:/var/lib/tenderduty
       - ./config.yml:/var/lib/tenderduty/config.yml
-      - ./chains.d:/var/lib/tenderduty/chains.d/
     logging:
       driver: "json-file"
       options:
@@ -55,4 +53,6 @@ services:
       - ./ssl-conf/certbot/www:/var/www/certbot
     depends_on:
       - tenderduty
+    networks:
+      - monitor-net
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
