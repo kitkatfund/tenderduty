@@ -11,7 +11,7 @@ volumes:
 
 services:
   tenderduty:
-    build: .
+    image: ghcr.io/blockpane/tenderduty:latest
     command: ""
     expose:
       - 8888   # Dashboard
