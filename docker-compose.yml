@@ -13,9 +13,9 @@ services:
   tenderduty:
     image: ghcr.io/blockpane/tenderduty:latest
     command: ""
-    expose:
-      - 8888   # Dashboard
-      - 28686  # Prometheus exporter
+    ports:
+      - "8888:8888"   # Dashboard
+      - "28686:28686"  # Prometheus exporter
     volumes:
       - home:/var/lib/tenderduty
       - ./config.yml:/var/lib/tenderduty/config.yml
