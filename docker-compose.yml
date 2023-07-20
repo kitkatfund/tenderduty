@@ -28,6 +28,7 @@ services:
     restart: unless-stopped
     networks:
       - monitor-net
+    container_name: tenderduty
   
   nginx:
     image: nginx:mainline-alpine
